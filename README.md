@@ -76,10 +76,10 @@ Automate the deployment so that every push to `main` updates the server.
 2.  **Add GitHub Secrets**:
     Go to your Repository Settings > **Secrets and variables** > **Actions** and add:
 
-    | Secret Name | Value |
+    | Secret Name | 
     | :--- | :--- |
-    | `EC2_HOST` | The `public_ip` from Terraform output. |
-    | `EC2_SSH_KEY` | The content of `terraform/strapi-key.pem`. |
+    | `EC2_HOST` | 
+    | `EC2_SSH_KEY`| 
     | `ENV_FILE` |  
 
     **Important**: You need to get your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from the AWS Console (IAM User) and add them to your local `.env` file before copying it to GitHub Secrets.
