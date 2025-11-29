@@ -56,12 +56,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
+          # Force lowercase for Docker image name
+          IMAGE_NAME: ghcr.io/${{ github.repository }}:latest
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          envs: GITHUB_TOKEN,GITHUB_ACTOR
+          envs: GITHUB_TOKEN,GITHUB_ACTOR,IMAGE_NAME
           script: |
+            # Convert IMAGE_NAME to lowercase (shell)
+            export IMAGE_NAME=$(echo $IMAGE_NAME | tr '[:upper:]' '[:lower:]')
+            
             # Login to GHCR
             echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
 

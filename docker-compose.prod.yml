@@ -4,7 +4,7 @@ services:
     container_name: strapi
     # REPLACE THIS WITH YOUR IMAGE NAME AFTER FIRST BUILD
     # Example: ghcr.io/username/repo-name:latest
-    image: ghcr.io/${GITHUB_REPOSITORY}:latest
+    image: ${IMAGE_NAME}
     restart: unless-stopped
     env_file: .env
     environment:
