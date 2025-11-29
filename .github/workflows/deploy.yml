@@ -38,7 +38,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: ./my-project
+          context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -92,6 +92,6 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "my-project/docker-compose.prod.yml,my-project/nginx/nginx.conf"
+          source: "docker-compose.prod.yml,nginx/nginx.conf"
           target: "~/"
           strip_components: 1
